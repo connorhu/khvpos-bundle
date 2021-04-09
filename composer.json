@@ -1,0 +1,20 @@
+{
+  "name": "connorhu/khvpos-bundle",
+  "description": "Symfony bundle for K&H VPos library",
+  "minimum-stability": "stable",
+  "license": "Mit",
+  "authors": [
+    {
+      "name": "Karoly Gossler",
+      "email": "connor@connor.hu"
+    }
+  ],
+  "require": {
+    "php": "^7.4",
+    "connorhu/khvpos": "dev-master"
+  },
+  "require-dev": {
+    "symfony/http-kernel": "^5.2",
+    "symfony/config": "^5.2"
+  }
+}
