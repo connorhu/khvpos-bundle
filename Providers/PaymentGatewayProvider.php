@@ -1,6 +1,6 @@
 <?php
 
-namespace KHVPos\KHBankToolsBundle\Providers;
+namespace KHBankTools\PaymentGatewayBundle\Providers;
 
 use KHBankTools\PaymentGateway\PaymentGateway;
 use KHBankTools\PaymentGateway\PaymentGatewayProviderInterface;
@@ -8,7 +8,6 @@ use KHBankTools\PaymentGateway\PaymentRequestArguments;
 use KHBankTools\PaymentGateway\SignatureProvider;
 use KHBankTools\PaymentGateway\TransactionInterface;
 use Psr\Http\Client\ClientInterface;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class PaymentGatewayProvider implements PaymentGatewayProviderInterface
 {
@@ -37,10 +36,12 @@ class PaymentGatewayProvider implements PaymentGatewayProviderInterface
         $this->config = $config;
         $this->httpClient = $httpClient;
 
-        dump($this->config);
+        if (count($this->config[0]) === 0) {
+            throw new \LogicException('KHPaymentGatewayBundle is unconfigured. Please configure it!');
+        }
     }
 
-    protected function getSignatureProvider(string $privateKeyPath, string $privateKeyPassphrase = null): SignatureProvider
+    protected function getSignatureProvider(string $privateKeyPath, string $privateKeyPassphrase = ''): SignatureProvider
     {
         $key = md5($privateKeyPath.$privateKeyPassphrase);
 

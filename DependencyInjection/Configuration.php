@@ -1,6 +1,6 @@
 <?php
 
-namespace KHVPos\KHBankToolsBundle\DependencyInjection;
+namespace KHBankTools\PaymentGatewayBundle\DependencyInjection;
 
 use KHBankTools\PaymentGateway\PaymentGateway;
 use KHBankTools\PaymentGateway\PaymentRequestArguments;
@@ -28,7 +28,7 @@ class Configuration implements ConfigurationInterface
                             ->end()
                             ->scalarNode('private_key_path')->isRequired()->end()
                             ->scalarNode('private_key_passphrase')
-                                ->defaultNull()
+                                ->defaultValue('')
                             ->end()
                             ->enumNode('version')
                                 ->defaultValue(PaymentGateway::VERSION_V1)
