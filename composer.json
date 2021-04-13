@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": "^7.4",
-    "connorhu/khvpos": "v1.0-beta2",
+    "connorhu/khvpos": "v1.0.0",
     "symfony/http-client": "^5.2",
     "nyholm/psr7": "^1.4"
   },
