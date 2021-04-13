@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ded7fb8ccfc3f30963586a1bfdf935f4",
+    "content-hash": "e0fefcf0320258c046144f4c68f2ab4f",
     "packages": [
         {
             "name": "connorhu/khvpos",
-            "version": "dev-master",
+            "version": "v1.0-beta1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/connorhu/khvpos.git",
-                "reference": "d747d69edd054e142bf90cf653c47e93a5f7824d"
+                "reference": "bfbd2f2f0bdcf731f30333fa33c0255e86168a93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/connorhu/khvpos/zipball/d747d69edd054e142bf90cf653c47e93a5f7824d",
-                "reference": "d747d69edd054e142bf90cf653c47e93a5f7824d",
+                "url": "https://api.github.com/repos/connorhu/khvpos/zipball/bfbd2f2f0bdcf731f30333fa33c0255e86168a93",
+                "reference": "bfbd2f2f0bdcf731f30333fa33c0255e86168a93",
                 "shasum": ""
             },
             "require": {
@@ -30,11 +30,10 @@
                 "symfony/http-client": "^5.1",
                 "symfony/var-dumper": "^5.1"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "KHBankTools\\PaymentGateway\\": "lib/"
+                    "KHTools\\VPos\\": "VPos/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -44,9 +43,9 @@
             "description": "Helper tools for working with K&H VPos",
             "support": {
                 "issues": "https://github.com/connorhu/khvpos/issues",
-                "source": "https://github.com/connorhu/khvpos/tree/master"
+                "source": "https://github.com/connorhu/khvpos/tree/v1.0-beta1"
             },
-            "time": "2021-04-09T21:06:35+00:00"
+            "time": "2021-04-13T11:47:53+00:00"
         },
         {
             "name": "nyholm/psr7",
@@ -1858,7 +1857,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "connorhu/khvpos": 20
+        "connorhu/khvpos": 10
     },
     "prefer-stable": false,
     "prefer-lowest": false,

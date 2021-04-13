@@ -11,13 +11,13 @@
   ],
   "require": {
     "php": "^7.4",
-    "connorhu/khvpos": "dev-master",
+    "connorhu/khvpos": "v1.0-beta1",
     "symfony/http-client": "^5.2",
     "nyholm/psr7": "^1.4"
   },
   "autoload": {
     "psr-4": {
-      "KHBankTools\\PaymentGatewayBundle\\": ""
+      "KHTools\\VPosBundle\\": ""
     }
   },
   "require-dev": {

@@ -2,19 +2,19 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use KHBankTools\PaymenyGatewayBundle\Providers\PaymentGatewayProvider;
-use KHBankTools\PaymentGateway\PaymentGatewayProviderInterface;
+use KHTools\VPosBundle\Providers\VPosClientProvider;
+use KHTools\VPosBundle\VPosClientProviderInterface;
 use Psr\Http\Client\ClientInterface;
 
 return static function (ContainerConfigurator $container) {
     $container->services()
-        ->set('khbanktools.payment_gateway_provider', PaymentGatewayProvider::class)
+        ->set('khvpos.vposclient_provider', VPosClientProvider::class)
             ->args([
-                param('khbanktools.payment_gateway_provider.config'),
+                param('khvpos.vposclient_provider.config'),
                 service(ClientInterface::class)
             ])
             ->tag('container.hot_path')
-        ->alias(PaymentGatewayProviderInterface::class, 'khbanktools.payment_gateway_provider');
+        ->alias(VPosClientProviderInterface::class, 'khvpos.vposclient_provider');
 
 
 };

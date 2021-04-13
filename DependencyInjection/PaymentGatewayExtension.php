@@ -1,6 +1,6 @@
 <?php
 
-namespace KHBankTools\PaymentGatewayBundle\DependencyInjection;
+namespace KHTools\VPosBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -11,7 +11,7 @@ class PaymentGatewayExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
-        $container->setParameter('khbanktools.payment_gateway_provider.config', $configs);
+        $container->setParameter('khvpos.vposclient_provider.config', $configs);
 
         $phpLoader = new PhpFileLoader($container, new FileLocator(\dirname(__DIR__).'/Resources/config'));
 
@@ -20,6 +20,6 @@ class PaymentGatewayExtension extends Extension
 
     public function getAlias()
     {
-        return 'khbank_tools';
+        return 'khvpos';
     }
 }

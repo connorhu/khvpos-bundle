@@ -1,15 +1,15 @@
 <?php
 
-namespace KHBankTools\PaymentGatewayBundle\Providers;
+namespace KHTools\VPosBundle\Providers;
 
-use KHBankTools\PaymentGateway\PaymentGateway;
-use KHBankTools\PaymentGateway\PaymentGatewayProviderInterface;
-use KHBankTools\PaymentGateway\PaymentRequestArguments;
-use KHBankTools\PaymentGateway\SignatureProvider;
-use KHBankTools\PaymentGateway\TransactionInterface;
+use KHTools\VPos\VPosClient;
+use KHTools\VPos\VPosClientProviderInterface;
+use KHTools\VPos\PaymentRequestArguments;
+use KHTools\VPos\SignatureProvider;
+use KHTools\VPos\TransactionInterface;
 use Psr\Http\Client\ClientInterface;
 
-class PaymentGatewayProvider implements PaymentGatewayProviderInterface
+class VPosClientProvider implements VPosClientProviderInterface
 {
     /**
      * @var array
@@ -27,7 +27,7 @@ class PaymentGatewayProvider implements PaymentGatewayProviderInterface
     private array $signatureProviders;
 
     /**
-     * @var PaymentGateway[]
+     * @var VPosClient[]
      */
     private array $paymentGateways;
 
@@ -37,7 +37,7 @@ class PaymentGatewayProvider implements PaymentGatewayProviderInterface
         $this->httpClient = $httpClient;
 
         if (count($this->config[0]) === 0) {
-            throw new \LogicException('KHPaymentGatewayBundle is unconfigured. Please configure it!');
+            throw new \LogicException('VPosBundle is unconfigured. Please configure it!');
         }
     }
 
@@ -60,22 +60,22 @@ class PaymentGatewayProvider implements PaymentGatewayProviderInterface
             }
         }
 
-        throw new \LogicException(sprintf('PaymentGateway config not found for currency: "%s"', $currency));
+        throw new \LogicException(sprintf('VPosClient config not found for currency: "%s"', $currency));
     }
 
-    protected function getPaymentGatewayWithCurrency(string $currency): PaymentGateway
+    protected function getPaymentGatewayWithCurrency(string $currency): VPosClient
     {
         if (!isset($this->paymentGateways[$currency])) {
             $config = $this->getConfigOptionsWithCurrency($currency);
             $signatureProvider = $this->getSignatureProvider($config['private_key_path'], $config['private_key_passphrase']);
 
-            $this->paymentGateways[$currency] = new PaymentGateway($config['version'], $config['merchant_id'], $signatureProvider, $config['test'], $this->httpClient);
+            $this->paymentGateways[$currency] = new VPosClient($config['version'], $config['merchant_id'], $signatureProvider, $config['test'], $this->httpClient);
         }
 
         return $this->paymentGateways[$currency];
     }
 
-    public function getPaymentGateway(TransactionInterface $transaction): PaymentGateway
+    public function getPaymentGateway(TransactionInterface $transaction): VPosClient
     {
         $currencyIsoString = PaymentRequestArguments::transactionCurrencyConverter($transaction);
 

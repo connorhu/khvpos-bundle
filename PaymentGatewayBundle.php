@@ -1,8 +1,8 @@
 <?php
 
-namespace KHBankTools\PaymentGatewayBundle;
+namespace KHTools\VPosBundle;
 
-use KHBankTools\PaymentGatewayBundle\DependencyInjection\PaymentGatewayExtension;
+use KHTools\VPosBundle\DependencyInjection\PaymentGatewayExtension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class PaymentGatewayBundle extends Bundle

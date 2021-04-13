@@ -1,9 +1,9 @@
 <?php
 
-namespace KHBankTools\PaymentGatewayBundle\DependencyInjection;
+namespace KHTools\VPosBundle\DependencyInjection;
 
-use KHBankTools\PaymentGateway\PaymentGateway;
-use KHBankTools\PaymentGateway\PaymentRequestArguments;
+use KHTools\VPos\VPosClient;
+use KHTools\VPos\PaymentRequestArguments;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -31,8 +31,8 @@ class Configuration implements ConfigurationInterface
                                 ->defaultValue('')
                             ->end()
                             ->enumNode('version')
-                                ->defaultValue(PaymentGateway::VERSION_V1)
-                                ->values(PaymentGateway::VERSIONS)
+                                ->defaultValue(VPosClient::VERSION_V1)
+                                ->values(VPosClient::VERSIONS)
                             ->end()
                             ->integerNode('merchant_id')->isRequired()->end()
                         ->end()
