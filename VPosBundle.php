@@ -5,7 +5,7 @@ namespace KHTools\VPosBundle;
 use KHTools\VPosBundle\DependencyInjection\PaymentGatewayExtension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class PaymentGatewayBundle extends Bundle
+class VPosBundle extends Bundle
 {
     public function getContainerExtension()
     {
