@@ -18,7 +18,7 @@ return static function (ContainerConfigurator $container) {
     else {
         $args = [
             '%khvpos.vposclient_provider.config%',
-            service(ClientInterface::class),
+            ref(ClientInterface::class),
         ];
     }
 
