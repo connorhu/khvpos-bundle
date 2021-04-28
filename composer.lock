@@ -4,24 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e0fefcf0320258c046144f4c68f2ab4f",
+    "content-hash": "2044e543abc164a82804c9ab4c87ab0c",
     "packages": [
         {
             "name": "connorhu/khvpos",
-            "version": "v1.0-beta1",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/connorhu/khvpos.git",
-                "reference": "bfbd2f2f0bdcf731f30333fa33c0255e86168a93"
+                "reference": "28651bd726eac4a5e96dabba23a87b6fbb181b4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/connorhu/khvpos/zipball/bfbd2f2f0bdcf731f30333fa33c0255e86168a93",
-                "reference": "bfbd2f2f0bdcf731f30333fa33c0255e86168a93",
+                "url": "https://api.github.com/repos/connorhu/khvpos/zipball/28651bd726eac4a5e96dabba23a87b6fbb181b4b",
+                "reference": "28651bd726eac4a5e96dabba23a87b6fbb181b4b",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.4",
+                "php": "^7.4|^8.0",
                 "psr/http-client": "^1.0"
             },
             "require-dev": {
@@ -43,9 +43,9 @@
             "description": "Helper tools for working with K&H VPos",
             "support": {
                 "issues": "https://github.com/connorhu/khvpos/issues",
-                "source": "https://github.com/connorhu/khvpos/tree/v1.0-beta1"
+                "source": "https://github.com/connorhu/khvpos/tree/v1.0.1"
             },
-            "time": "2021-04-13T11:47:53+00:00"
+            "time": "2021-04-28T07:19:23+00:00"
         },
         {
             "name": "nyholm/psr7",
@@ -1855,13 +1855,11 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "connorhu/khvpos": 10
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.4"
+        "php": "^7.4|^8.0"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"
