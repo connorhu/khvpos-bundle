@@ -2,25 +2,17 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
+use KHTools\VPos\VPosClientProviderInterface;
 use KHTools\VPosBundle\Providers\VPosClientProvider;
-use KHTools\VPosBundle\VPosClientProviderInterface;
 use Psr\Http\Client\ClientInterface;
 
 return static function (ContainerConfigurator $container) {
     $args = [];
 
-    if (function_exists('param')) {
-        $args = [
-            param('khvpos.vposclient_provider.config'),
-            service(ClientInterface::class)
-        ];
-    }
-    else {
-        $args = [
-            '%khvpos.vposclient_provider.config%',
-            ref(ClientInterface::class),
-        ];
-    }
+    $args = [
+        param('khvpos.vposclient_provider.config'),
+        service(ClientInterface::class)
+    ];
 
     $container->services()
         ->set('khvpos.vposclient_provider', VPosClientProvider::class)

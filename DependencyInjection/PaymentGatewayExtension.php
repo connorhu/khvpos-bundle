@@ -18,7 +18,7 @@ class PaymentGatewayExtension extends Extension
         $phpLoader->load('services.php');
     }
 
-    public function getAlias()
+    public function getAlias(): string
     {
         return 'khvpos';
     }
