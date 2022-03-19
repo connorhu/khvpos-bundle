@@ -7,6 +7,7 @@ use KHTools\VPos\VPosClientProviderInterface;
 use KHTools\VPos\PaymentRequestArguments;
 use KHTools\VPos\SignatureProvider;
 use KHTools\VPos\TransactionInterface;
+use KHTools\VPosBundle\Exceptions\ConfigNotFoundException;
 use Psr\Http\Client\ClientInterface;
 
 class VPosClientProvider implements VPosClientProviderInterface
@@ -37,7 +38,7 @@ class VPosClientProvider implements VPosClientProviderInterface
         $this->httpClient = $httpClient;
 
         if (count($this->config[0]) === 0) {
-            throw new \LogicException('VPosBundle is unconfigured. Please configure it!');
+            throw new ConfigNotFoundException('VPosBundle is not configured. Please configure it!');
         }
     }
 
@@ -60,7 +61,7 @@ class VPosClientProvider implements VPosClientProviderInterface
             }
         }
 
-        throw new \LogicException(sprintf('VPosClient config not found for currency: "%s"', $currency));
+        throw new ConfigNotFoundException(sprintf('VPosClient config not found for currency: "%s"', $currency));
     }
 
     protected function getPaymentGatewayWithCurrency(string $currency): VPosClient
@@ -75,6 +76,11 @@ class VPosClientProvider implements VPosClientProviderInterface
         return $this->paymentGateways[$currency];
     }
 
+    /**
+     * @throws ConfigNotFoundException
+     * @param TransactionInterface $transaction
+     * @return VPosClient
+     */
     public function getPaymentGateway(TransactionInterface $transaction): VPosClient
     {
         $currencyIsoString = PaymentRequestArguments::transactionCurrencyConverter($transaction);
