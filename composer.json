@@ -24,5 +24,13 @@
     "symfony/http-kernel": "^5.4|^6.0",
     "symfony/config": "^5.4|^6.0",
     "symfony/dependency-injection": "^5.4|^6.0"
+  },
+  "extra": {
+    "symfony": {
+      "endpoint": [
+        "https://api.github.com/repos/connorhu/recipes/contents/index.json",
+        "flex://defaults"
+      ]
+    }
   }
 }
