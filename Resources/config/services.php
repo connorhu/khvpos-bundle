@@ -7,16 +7,17 @@ use KHTools\VPosBundle\Providers\VPosClientProvider;
 use Psr\Http\Client\ClientInterface;
 
 return static function (ContainerConfigurator $container) {
-    $args = [];
 
     $args = [
-        param('khvpos.vposclient_provider.config'),
+        param('khvpos.client_provider.config'),
         service(ClientInterface::class)
     ];
 
-    $container->services()
-        ->set('khvpos.vposclient_provider', VPosClientProvider::class)
+    $services = $container->services();
+
+    $services
+        ->set('khvpos.vpos_client_provider', VPosClientProvider::class)
             ->args($args)
             ->tag('container.hot_path')
-        ->alias(VPosClientProviderInterface::class, 'khvpos.vposclient_provider');
+        ->alias(VPosClientProviderInterface::class, 'khvpos.client_provider');
 };

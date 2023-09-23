@@ -10,10 +10,10 @@
     }
   ],
   "require": {
-    "php": "^7.4|>=8.0",
-    "connorhu/khvpos": "v1.0.4",
+    "php": ">=8.2",
+    "connorhu/khvpos": "dev-feature/eApi",
     "symfony/http-client": ">=5.4",
-    "nyholm/psr7": "^1.4"
+    "nyholm/psr7": "^1.8"
   },
   "autoload": {
     "psr-4": {

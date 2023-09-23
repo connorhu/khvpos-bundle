@@ -2,6 +2,7 @@
 
 namespace KHTools\VPosBundle\DependencyInjection;
 
+use KHTools\VPos\Entities\Enums\Currency;
 use KHTools\VPos\VPosClient;
 use KHTools\VPos\PaymentRequestArguments;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -15,26 +16,27 @@ class Configuration implements ConfigurationInterface
 
         $treeBuilder->getRootNode()
             ->children()
-                ->arrayNode('payment_settings')
+                ->booleanNode('test')
+                    ->defaultTrue()
+                ->end()
+                ->scalarNode('mips_public_key_path')->defaultValue(null)->end()
+                ->enumNode('version')
+                    ->defaultValue(VPosClient::VERSION_REST_V1)
+                    ->values([VPosClient::VERSION_REST_V1,])
+                ->end()
+                ->arrayNode('merchants')
                     ->useAttributeAsKey('name')
                     ->arrayPrototype()
                         ->children()
                             ->enumNode('currency')
-                                ->defaultValue(PaymentRequestArguments::CURRENCY_HUF)
-                                ->values(PaymentRequestArguments::CURRENCIES)
-                            ->end()
-                            ->booleanNode('test')
-                                ->defaultTrue()
+                                ->defaultValue('HUF')
+                                ->values(Currency::stringValues())
                             ->end()
                             ->scalarNode('private_key_path')->isRequired()->end()
                             ->scalarNode('private_key_passphrase')
                                 ->defaultValue('')
                             ->end()
-                            ->enumNode('version')
-                                ->defaultValue(VPosClient::VERSION_V1)
-                                ->values(VPosClient::VERSIONS)
-                            ->end()
-                            ->integerNode('merchant_id')->isRequired()->end()
+                            ->scalarNode('merchant_id')->isRequired()->end()
                         ->end()
                     ->end()
                 ->end()
