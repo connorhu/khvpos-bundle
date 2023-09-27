@@ -46,19 +46,18 @@ class PaymentGatewayExtension extends Extension
     {
         $mipsPublicKeyPath = $configuration['mips_public_key_path'] ?? $this->getBundledMipsPublicKeyPath($configuration['test']);
 
-        $privateKeys = [];
-        foreach ($configuration['merchants'] as $clientConfig) {
-            $privateKeys[$clientConfig['merchant_id']] = new PrivateKey($clientConfig['private_key_path'], $clientConfig['private_key_passphrase']);
-        }
-
-        $container->register('khvpos.signature_provider', SignatureProvider::class)
+        $definition = $container->register('khvpos.signature_provider', SignatureProvider::class)
             ->setArguments([
-                $privateKeys,
+                [],
                 $mipsPublicKeyPath,
             ])
             ->addTag('khvpos.signature_provider')
             ->setLazy(true)
         ;
+
+        foreach ($configuration['merchants'] as $clientConfig) {
+            $definition->addMethodCall('addPrivateKey', [$clientConfig['merchant_id'], $clientConfig['private_key_path'], $clientConfig['private_key_passphrase']]);
+        }
 
         $container->setAlias(SignatureProviderInterface::class, 'khvpos.signature_provider');
     }
