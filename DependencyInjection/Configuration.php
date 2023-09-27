@@ -4,7 +4,6 @@ namespace KHTools\VPosBundle\DependencyInjection;
 
 use KHTools\VPos\Entities\Enums\Currency;
 use KHTools\VPos\VPosClient;
-use KHTools\VPos\PaymentRequestArguments;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
