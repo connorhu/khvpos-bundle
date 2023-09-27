@@ -40,6 +40,8 @@ class PaymentGatewayExtension extends Extension
             ->setAutoconfigured(true)
             ->setAutowired(true)
         ;
+
+        $container->setAlias(VPosClient::class, 'khvpos.vpos_client');
     }
 
     protected function setupSignatureProvider(array $configuration, ContainerBuilder $container): void
