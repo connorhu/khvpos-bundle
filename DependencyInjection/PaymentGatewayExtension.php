@@ -3,6 +3,12 @@
 namespace KHTools\VPosBundle\DependencyInjection;
 
 use KHTools\VPos\Keys\PrivateKey;
+use KHTools\VPos\Normalizers\AddressNormalizer;
+use KHTools\VPos\Normalizers\CartItemNormalizer;
+use KHTools\VPos\Normalizers\EnumNormalizer;
+use KHTools\VPos\Normalizers\HttpErrorNormalizer;
+use KHTools\VPos\Normalizers\RequestNormalizer;
+use KHTools\VPos\Normalizers\ResponseNormalizer;
 use KHTools\VPos\SignatureProvider;
 use KHTools\VPos\SignatureProviderInterface;
 use KHTools\VPos\VPosClient;
@@ -25,9 +31,35 @@ class PaymentGatewayExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
         $container->setParameter('khvpos.client_provider.config', $config);
 
+        $this->setupSerializer($config, $container);
         $this->setupSignatureProvider($config, $container);
         $this->setupVPosClient($config, $container);
         $this->setupMerchantProvider($config, $container);
+    }
+
+    protected function setupSerializer(array $configuration, ContainerBuilder $container): void
+    {
+        $container->register('khvpos.serializer.normalizer.address_normalizer', AddressNormalizer::class)
+            ->addTag('serializer.normalizer', ['priority' => -915])
+            ->setAutowired(true);
+
+        $container->register('khvpos.serializer.normalizer.cart_item_normalizer', CartItemNormalizer::class)
+            ->addTag('serializer.normalizer', ['priority' => -915])
+            ->setAutowired(true);
+
+        $container->register('khvpos.serializer.normalizer.enum_normalizer', EnumNormalizer::class)
+            ->addTag('serializer.normalizer', ['priority' => -915]);
+
+        $container->register('khvpos.serializer.normalizer.http_error_normalizer', HttpErrorNormalizer::class)
+            ->addTag('serializer.normalizer', ['priority' => -915]);
+
+        $container->register('khvpos.serializer.normalizer.request_normalizer', RequestNormalizer::class)
+            ->addTag('serializer.normalizer', ['priority' => -915])
+            ->setAutowired(true);
+
+        $container->register('khvpos.serializer.normalizer.response_normalizer', ResponseNormalizer::class)
+            ->addTag('serializer.normalizer', ['priority' => -915])
+            ->setAutowired(true);
     }
 
     protected function setupVPosClient(array $configuration, ContainerBuilder $container): void
