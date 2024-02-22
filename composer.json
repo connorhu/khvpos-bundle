@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": ">=8.2",
-    "connorhu/khvpos": "dev-master#74eb3c30",
+    "connorhu/khvpos": "dev-master#b7eb591",
     "symfony/http-client": ">=5.4",
     "nyholm/psr7": "^1.8"
   },
