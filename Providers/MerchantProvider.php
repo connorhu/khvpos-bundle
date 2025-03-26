@@ -2,7 +2,7 @@
 
 namespace KHTools\VPosBundle\Providers;
 
-use KHTools\VPos\Entities\Merchant;
+use KHTools\VPos\Models\Merchant;
 use KHTools\VPos\Exceptions\InvalidArgumentException;
 
 class MerchantProvider implements MerchantProviderInterface

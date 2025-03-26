@@ -2,7 +2,7 @@
 
 namespace KHTools\VPosBundle\DependencyInjection;
 
-use KHTools\VPos\Entities\Enums\Currency;
+use KHTools\VPos\Models\Enums\Currency;
 use KHTools\VPos\VPosClient;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
