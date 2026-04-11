@@ -32,5 +32,6 @@
         "flex://defaults"
       ]
     }
-  }
+  },
+  "abandoned": "connorhu/khvpos"
 }
